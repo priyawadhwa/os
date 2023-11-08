@@ -2,7 +2,7 @@ package:
   name: timestamp-authority
   version: 1.2.0
   epoch: 0
-  description: RFC3161 Timestamp Authority
+  description: Software supply chain timestamp authority
   target-architecture:
     - all
   copyright:
@@ -16,10 +16,8 @@ package:
 environment:
   contents:
     packages:
-      - ca-certificates-bundle
       - busybox
       - git
-      - go
 
 pipeline:
   - uses: git-checkout
@@ -28,22 +26,29 @@ pipeline:
       tag: v${{package.version}}
       expected-commit: c21da35174dd1a44ff425f695f87e99061c52d99
 
-  - runs: make timestamp-cli timestamp-server
-
-  - uses: strip
-
 subpackages:
   - name: ${{package.name}}-server
     pipeline:
-      - runs: |
-          mkdir -p ${{targets.subpkgdir}}/usr/bin
-          mv ./bin/timestamp-server ${{targets.subpkgdir}}/usr/bin/
+      - uses: go/build
+        with:
+          modroot: .
+          subpackage: "true"
+          packages: ./cmd/timestamp-server
+          output: timestamp-server
+          ldflags: -w
+      - uses: strip
 
   - name: ${{package.name}}-cli
     pipeline:
-      - runs: |
-          mkdir -p ${{targets.subpkgdir}}/usr/bin
-          mv ./bin/timestamp-cli ${{targets.subpkgdir}}/usr/bin/
+      - uses: go/build
+        with:
+          modroot: .
+          subpackage: "true"
+          packages: ./cmd/timestamp-cli
+          output: timestamp-cli
+          ldflags: -w
+      - uses: strip
+
 
 update:
   enabled: true
