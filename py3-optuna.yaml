@@ -53,3 +53,9 @@ update:
   github:
     identifier: optuna/optuna
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: optuna

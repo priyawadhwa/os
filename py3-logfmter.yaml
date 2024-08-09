@@ -36,3 +36,9 @@ update:
   github:
     identifier: jteppinette/python-logfmter
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: logfmter

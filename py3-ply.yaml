@@ -43,3 +43,9 @@ pipeline:
 update:
   enabled: false
   exclude-reason: some sort of a deprecated project
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: ply

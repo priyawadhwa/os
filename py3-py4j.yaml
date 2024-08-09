@@ -69,3 +69,9 @@ update:
   github:
     identifier: py4j/py4j
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: py4j

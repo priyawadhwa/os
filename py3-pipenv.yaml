@@ -48,3 +48,9 @@ update:
     identifier: pypa/pipenv
     use-tag: true
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pipenv

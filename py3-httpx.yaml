@@ -48,3 +48,9 @@ update:
   github:
     identifier: encode/httpx
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: httpx

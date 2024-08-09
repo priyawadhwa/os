@@ -37,3 +37,9 @@ update:
   manual: false
   github:
     identifier: liran-funaro/objsize
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: objsize

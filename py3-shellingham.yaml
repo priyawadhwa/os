@@ -42,3 +42,9 @@ update:
     identifier: sarugaku/shellingham
     use-tag: true
     strip-suffix: .post1
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: shellingham

@@ -40,3 +40,9 @@ update:
   github:
     use-tag: true
     identifier: gweis/isodate
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: isodate

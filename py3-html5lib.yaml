@@ -41,3 +41,9 @@ update:
   github:
     identifier: html5lib/html5lib-python
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: html5lib

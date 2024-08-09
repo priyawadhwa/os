@@ -38,3 +38,9 @@ update:
   manual: false
   github:
     identifier: pickleshare/pickleshare
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pickleshare

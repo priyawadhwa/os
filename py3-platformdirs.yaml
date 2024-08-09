@@ -45,3 +45,9 @@ update:
   github:
     identifier: platformdirs/platformdirs
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: platformdirs

@@ -40,3 +40,9 @@ update:
   github:
     identifier: xolox/python-humanfriendly
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: humanfriendly

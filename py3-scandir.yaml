@@ -38,3 +38,9 @@ update:
   github:
     identifier: benhoyt/scandir
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: scandir

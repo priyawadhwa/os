@@ -40,3 +40,9 @@ update:
     identifier: httplib2/httplib2
     strip-prefix: v
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: httplib2

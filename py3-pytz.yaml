@@ -37,3 +37,9 @@ update:
   exclude-reason: releases have an odd structure
   release-monitor:
     identifier: 6537
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pytz

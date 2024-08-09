@@ -39,3 +39,9 @@ update:
   github:
     identifier: wbond/oscrypto
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: oscrypto

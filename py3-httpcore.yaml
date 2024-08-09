@@ -49,3 +49,9 @@ update:
   github:
     identifier: encode/httpcore
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: httpcore

@@ -40,3 +40,9 @@ update:
     identifier: bear/parsedatetime
     strip-prefix: v
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: parsedatetime

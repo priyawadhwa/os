@@ -48,3 +48,9 @@ update:
     identifier: PyMySQL/PyMySQL
     strip-prefix: v
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pymysql

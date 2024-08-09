@@ -42,3 +42,9 @@ update:
   manual: false
   github:
     identifier: mongodb/mongo-python-driver
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pymongo

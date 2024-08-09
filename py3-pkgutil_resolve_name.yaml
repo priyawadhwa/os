@@ -38,3 +38,9 @@ update:
   enabled: true
   release-monitor:
     identifier: 76388
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pkgutil_resolve_name

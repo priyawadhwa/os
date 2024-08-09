@@ -69,3 +69,9 @@ update:
     - post
   github:
     identifier: pypa/packaging
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: packaging

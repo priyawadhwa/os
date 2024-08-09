@@ -45,3 +45,9 @@ update:
     identifier: lxml/lxml
     strip-prefix: lxml-
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: lxml

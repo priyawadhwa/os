@@ -45,3 +45,9 @@ update:
   github:
     identifier: jupyter/nbclient
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: nbclient

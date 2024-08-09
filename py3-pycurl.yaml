@@ -49,3 +49,9 @@ update:
     strip-prefix: REL_
     tag-filter: REL_
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pycurl

@@ -43,3 +43,9 @@ update:
     identifier: python-hyper/h11
     use-tag: true
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: h11

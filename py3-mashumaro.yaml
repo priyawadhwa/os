@@ -40,3 +40,9 @@ update:
   github:
     identifier: Fatal1ty/mashumaro
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: mashumaro

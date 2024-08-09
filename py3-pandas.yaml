@@ -54,3 +54,9 @@ update:
   github:
     identifier: pandas-dev/pandas
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pandas

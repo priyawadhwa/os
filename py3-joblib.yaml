@@ -38,3 +38,9 @@ update:
   enabled: true
   github:
     identifier: joblib/joblib
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: joblib

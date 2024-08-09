@@ -50,3 +50,9 @@ update:
   enabled: true
   github:
     identifier: nucleic/kiwi
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: kiwisolver

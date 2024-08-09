@@ -50,3 +50,9 @@ update:
     identifier: python-jsonschema/referencing
     tag-filter: v
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: referencing

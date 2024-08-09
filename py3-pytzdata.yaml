@@ -53,3 +53,9 @@ update:
   github:
     identifier: sdispater/pytzdata
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pytzdata

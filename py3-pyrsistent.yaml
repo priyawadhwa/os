@@ -44,3 +44,9 @@ update:
     identifier: tobgu/pyrsistent
     strip-prefix: v
     tag-filter: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pyrsistent

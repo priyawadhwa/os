@@ -37,3 +37,9 @@ update:
   enabled: true
   release-monitor:
     identifier: 209128
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pkgconfig

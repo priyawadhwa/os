@@ -40,3 +40,9 @@ update:
   github:
     identifier: shibukawa/imagesize_py
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: imagesize

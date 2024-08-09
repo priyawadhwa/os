@@ -40,3 +40,9 @@ update:
   github:
     identifier: jazzband/pathlib2
     strip-suffix: -post1
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pathlib2

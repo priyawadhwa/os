@@ -39,3 +39,10 @@ update:
   manual: false
   github:
     identifier: keleshev/schema
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: schema.yml
+	

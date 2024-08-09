@@ -33,3 +33,9 @@ update:
   enabled: true
   release-monitor:
     identifier: 3915
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: mako

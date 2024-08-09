@@ -41,3 +41,9 @@ update:
     identifier: jaraco/jaraco.classes
     use-tag: true
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: jaraco.classes

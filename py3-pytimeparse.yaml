@@ -37,3 +37,9 @@ update:
   enabled: true
   github:
     identifier: wroberts/pytimeparse
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pytimeparse

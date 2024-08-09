@@ -41,3 +41,9 @@ update:
   github:
     identifier: pyinvoke/invoke
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: invoke

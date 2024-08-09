@@ -38,3 +38,9 @@ update:
   github:
     identifier: pyasn1/pyasn1
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pyasn1

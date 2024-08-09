@@ -38,3 +38,9 @@ update:
   github:
     identifier: lepture/mistune
     strip-prefix: v
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: mistune

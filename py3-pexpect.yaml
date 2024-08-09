@@ -39,3 +39,9 @@ update:
   github:
     identifier: pexpect/pexpect
     use-tag: true
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: pexpect

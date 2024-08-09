@@ -38,3 +38,9 @@ update:
   manual: false
   github:
     identifier: mkorpela/overrides
+
+test:
+  pipeline:
+    - uses: python/import
+      with:
+        import: overrides
