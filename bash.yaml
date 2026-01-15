@@ -1,7 +1,7 @@
 package:
   name: bash
   version: "5.3"
-  epoch: 3
+  epoch: 4
   description: "GNU bourne again shell"
   copyright:
     - license: GPL-3.0-or-later
@@ -63,7 +63,7 @@ subpackages:
     test:
       pipeline:
         - runs: |
-            [ /usr/bin/sh -ef /usr/bin/bash ] || { echo "/usr/bin/sh is not same as /usr/bin/bash"; exit 1; }
+            [ /usr/bin/sh -ef /usr/bin/bash ]
             sh --version
             sh --help
 
@@ -107,8 +107,29 @@ subpackages:
       - runs: |
           mkdir -p ${{targets.subpkgdir}}/usr/lib
           mv "${{targets.destdir}}/usr/lib/bash" ${{targets.subpkgdir}}/usr/lib/
+    test:
+      environment:
+        contents:
+          packages:
+            - bash
+      pipeline:
+        - name: Test loadable builtins
+          runs: |
+            # Verify builtins directory exists
+            stat /usr/lib/bash
+
+            # Test print builtin
+            stat /usr/lib/bash/print
+            output=$(bash -c 'enable -f /usr/lib/bash/print print && print "test output"')
+            [ "$output" = "test output" ]
+
+            # Test basename builtin
+            stat /usr/lib/bash/basename
+            result=$(bash -c 'enable -f /usr/lib/bash/basename basename && basename /path/to/file.txt')
+            [ "$result" = "file.txt" ]
     dependencies:
       runtime:
+        - bash
         - merged-bin
         - wolfi-baselayout
 
@@ -119,11 +140,53 @@ update:
 
 test:
   pipeline:
-    - runs: |
-        out=$(/usr/bin/bash --version)
-        echo "$out" | grep "${{package.version}}"
-        bash --version
-        bash --help
-    - runs: |
+    - uses: test/tw/ver-check
+      with:
+        bins: bash
+    - uses: test/tw/help-check
+      with:
+        bins: bash
+    - name: Test basic echo command
+      runs: |
         out=$(/usr/bin/bash -c "echo hello world")
         [ "$out" = "hello world" ]
+    - name: Test variable assignment and expansion
+      runs: |
+        result=$(bash -c 'x=5; echo $x')
+        [ "$result" = "5" ]
+    - name: Test conditionals
+      runs: |
+        result=$(bash -c 'if [ 1 -eq 1 ]; then echo pass; else echo fail; fi')
+        [ "$result" = "pass" ]
+    - name: Test loops
+      runs: |
+        result=$(bash -c 'for i in 1 2 3; do echo -n $i; done')
+        [ "$result" = "123" ]
+    - name: Test command substitution
+      runs: |
+        result=$(bash -c 'x=$(echo test); echo $x')
+        [ "$result" = "test" ]
+    - name: Test pipes
+      runs: |
+        result=$(bash -c 'echo hello | grep hello')
+        [ "$result" = "hello" ]
+    - name: Test shell builtins
+      runs: |
+        # Test cd builtin
+        [ "$(bash -c 'cd /tmp && pwd')" = "/tmp" ]
+
+        # Test the test builtin
+        bash -c 'test -d /tmp'
+    - name: Test executing script from file
+      runs: |
+        # Create a test script
+        cat > /tmp/test_script.sh <<'EOF'
+        #!/usr/bin/bash
+        echo "script executed successfully"
+        EOF
+
+        chmod +x /tmp/test_script.sh
+
+        # Execute the script and verify output
+        result=$(bash /tmp/test_script.sh)
+        [ "$result" = "script executed successfully" ]
